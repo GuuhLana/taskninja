@@ -1,24 +1,13 @@
-package com.glrtech.taskninja.entity;
+package com.glrtech.taskninja.dto;
 
 import java.time.LocalDateTime;
 
+import com.glrtech.taskninja.entity.Usuario;
 import com.glrtech.taskninja.enums.Prioridade;
 import com.glrtech.taskninja.enums.Status;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+public class TarefaDTO {
 
-@Entity
-@Table(name = "TB_TAREFA")
-public class Tarefa {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nomeTarefa;
 	private String descricao;
@@ -26,27 +15,7 @@ public class Tarefa {
 	private Prioridade prioridade;
 	private LocalDateTime dataInicio;
 	private LocalDateTime dataFim;
-
-	@ManyToOne
-	@JoinColumn(name = "usuario_id", nullable = false)
 	private Usuario usuario;
-
-	public Tarefa(Long id, String nomeTarefa, String descricao, Status status, Prioridade prioridade,
-			LocalDateTime dataInicio, LocalDateTime dataFim, Usuario usuario) {
-		super();
-		this.id = id;
-		this.nomeTarefa = nomeTarefa;
-		this.descricao = descricao;
-		this.status = status;
-		this.prioridade = prioridade;
-		this.dataInicio = dataInicio;
-		this.dataFim = dataFim;
-		this.usuario = usuario;
-	}
-
-	public Tarefa() {
-		super();
-	}
 
 	public Long getId() {
 		return id;
@@ -56,20 +25,12 @@ public class Tarefa {
 		this.id = id;
 	}
 
-	public String getNome() {
+	public String getNomeTarefa() {
 		return nomeTarefa;
 	}
 
-	public void setNome(String nomeTarefa) {
+	public void setNomeTarefa(String nomeTarefa) {
 		this.nomeTarefa = nomeTarefa;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 
 	public String getDescricao() {
@@ -110,6 +71,14 @@ public class Tarefa {
 
 	public void setDataFim(LocalDateTime dataFim) {
 		this.dataFim = dataFim;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

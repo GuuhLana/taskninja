@@ -8,4 +8,5 @@ import com.glrtech.taskninja.entity.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
+	boolean existsByLogin(String login);
 }
