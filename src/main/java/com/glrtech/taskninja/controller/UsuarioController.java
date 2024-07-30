@@ -21,7 +21,7 @@ import com.glrtech.taskninja.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = "Usuário Controller -> Operações")
+@Tag(name = "Operações -> Usuário Controller")
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {

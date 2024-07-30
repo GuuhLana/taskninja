@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import com.glrtech.taskninja.enums.Prioridade;
 import com.glrtech.taskninja.enums.Status;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,23 +21,35 @@ public class Tarefa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(name = "nome_tarefa")
 	private String nomeTarefa;
-	private String descricao;
+	
+	@Column(name = "observacao")
+	private String observacao;
+	
+	@Column(name = "status")
 	private Status status;
+	
+	@Column(name = "prioridade")
 	private Prioridade prioridade;
+	
+	@Column(name = "data_inicio")
 	private LocalDateTime dataInicio;
+	
+	@Column(name = "data_final")
 	private LocalDateTime dataFim;
 
 	@ManyToOne
 	@JoinColumn(name = "usuario_id", nullable = false)
 	private Usuario usuario;
 
-	public Tarefa(Long id, String nomeTarefa, String descricao, Status status, Prioridade prioridade,
+	public Tarefa(Long id, String nomeTarefa, String observacao, Status status, Prioridade prioridade,
 			LocalDateTime dataInicio, LocalDateTime dataFim, Usuario usuario) {
 		super();
 		this.id = id;
 		this.nomeTarefa = nomeTarefa;
-		this.descricao = descricao;
+		this.observacao = observacao;
 		this.status = status;
 		this.prioridade = prioridade;
 		this.dataInicio = dataInicio;
@@ -60,7 +73,7 @@ public class Tarefa {
 		return nomeTarefa;
 	}
 
-	public void setNome(String nomeTarefa) {
+	public void setNomeTarefa(String nomeTarefa) {
 		this.nomeTarefa = nomeTarefa;
 	}
 
@@ -72,12 +85,12 @@ public class Tarefa {
 		this.usuario = usuario;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getObservacao() {
+		return observacao;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 
 	public Status getStatus() {

@@ -1,27 +1,25 @@
-package com.glrtech.taskninja.dto;
-
-import java.time.LocalDateTime;
+package com.glrtech.taskninja.model.request;
 
 import com.glrtech.taskninja.enums.Prioridade;
 import com.glrtech.taskninja.enums.Status;
 
-public class TarefaDTO {
-
-	private Long id;
+public class CriarTarefaRequest {
 	private String nomeTarefa;
 	private String observacao;
 	private Status status;
 	private Prioridade prioridade;
-	private LocalDateTime dataInicio;
-	private LocalDateTime dataFim;
 	private Long usuarioId;
 
-	public Long getId() {
-		return id;
+	public CriarTarefaRequest(String nomeTarefa, String observacao, Status status, Prioridade prioridade,
+			Long usuarioId) {
+		this.nomeTarefa = nomeTarefa;
+		this.observacao = observacao;
+		this.status = status;
+		this.prioridade = prioridade;
+		this.usuarioId = usuarioId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public CriarTarefaRequest() {
 	}
 
 	public String getNomeTarefa() {
@@ -56,28 +54,11 @@ public class TarefaDTO {
 		this.prioridade = prioridade;
 	}
 
-	public LocalDateTime getDataInicio() {
-		return dataInicio;
-	}
-
-	public void setDataInicio(LocalDateTime dataInicio) {
-		this.dataInicio = dataInicio;
-	}
-
-	public LocalDateTime getDataFim() {
-		return dataFim;
-	}
-
-	public void setDataFim(LocalDateTime dataFim) {
-		this.dataFim = dataFim;
-	}
-
 	public Long getUsuarioId() {
 		return usuarioId;
 	}
 
-	public void setUsuarioId(Long Long) {
-		this.usuarioId = Long;
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
 	}
-
 }
