@@ -42,6 +42,17 @@ public class TarefaController {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	@Operation(summary = "Edita a tarefa com o ID informado")
+	@PutMapping("/{id}")
+	public ResponseEntity<?> editarTarefa(@PathVariable Long id, @RequestBody TarefaDTO tarefaDTO) {
+		try {
+			Tarefa tarefaAtualizada = service.editarTarefa(id, tarefaDTO);
+			return new ResponseEntity<>(tarefaAtualizada, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
 
 	@Operation(summary = "Retorna uma lista com todas as tarefas associadas ao usuário")
 	@GetMapping("/{id}")
@@ -54,12 +65,12 @@ public class TarefaController {
 		}
 	}
 
-	@Operation(summary = "Edita a tarefa com o ID informado")
-	@PutMapping("/{id}")
-	public ResponseEntity<?> editarTarefa(@PathVariable Long id, @RequestBody TarefaDTO tarefaDTO) {
+	@Operation(summary = "Retorna uma tarefa com o ID informado")
+	@GetMapping("/tarefa/{id}")
+	public ResponseEntity<?> obterTarefaPorId(@PathVariable Long id) {
 		try {
-			Tarefa tarefaAtualizada = service.editarTarefa(id, tarefaDTO);
-			return new ResponseEntity<>(tarefaAtualizada, HttpStatus.OK);
+			Tarefa tarefa = service.obterTarefaPorId(id);
+			return new ResponseEntity<>(tarefa, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}

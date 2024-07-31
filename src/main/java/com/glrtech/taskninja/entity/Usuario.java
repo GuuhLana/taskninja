@@ -2,6 +2,8 @@ package com.glrtech.taskninja.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,15 +23,16 @@ public class Usuario {
 
 	@Column(name = "nome_usuario")
 	private String nome;
-	
+
 	@Column(name = "login_usuario")
 	private String login;
-	
+
 	@Column(name = "senha_usuario")
 	private String senha;
-	
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Tarefa> tarefas;
+
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference
+	private List<Tarefa> tarefas;
 
 	public Usuario(String nome, String login, String senha) {
 		this.nome = nome;
@@ -79,6 +82,5 @@ public class Usuario {
 	public void setTarefas(List<Tarefa> tarefas) {
 		this.tarefas = tarefas;
 	}
-	
-	
+
 }

@@ -2,6 +2,7 @@ package com.glrtech.taskninja.entity;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.glrtech.taskninja.enums.Prioridade;
 import com.glrtech.taskninja.enums.Status;
 
@@ -42,6 +43,7 @@ public class Tarefa {
 
 	@ManyToOne
 	@JoinColumn(name = "usuario_id", nullable = false)
+	@JsonBackReference
 	private Usuario usuario;
 
 	public Tarefa(Long id, String nomeTarefa, String observacao, Status status, Prioridade prioridade,
@@ -69,7 +71,7 @@ public class Tarefa {
 		this.id = id;
 	}
 
-	public String getNome() {
+	public String getNomeTarefa() {
 		return nomeTarefa;
 	}
 

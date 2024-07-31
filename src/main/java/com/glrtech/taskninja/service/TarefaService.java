@@ -20,12 +20,16 @@ public class TarefaService {
 	@Autowired
 	private TarefaRepository tarefaRepository;
 
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+
 	public List<Tarefa> listarTarefasPorUsuario(Long usuarioId) {
 		return tarefaRepository.findByUsuarioId(usuarioId);
 	}
 
-	@Autowired
-	private UsuarioRepository usuarioRepository;
+	public Tarefa obterTarefaPorId(Long id) {
+		return tarefaRepository.findById(id).orElseThrow(() -> new RuntimeException("Tarefa não encontrada"));
+	}
 
 	public Tarefa criarTarefa(String nomeTarefa, String observacaoTarefa, Long idUsuario, Status status,
 			Prioridade prioridade) {

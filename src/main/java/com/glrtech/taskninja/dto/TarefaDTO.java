@@ -7,7 +7,6 @@ import com.glrtech.taskninja.enums.Status;
 
 public class TarefaDTO {
 
-	private Long id;
 	private String nomeTarefa;
 	private String observacao;
 	private Status status;
@@ -15,14 +14,6 @@ public class TarefaDTO {
 	private LocalDateTime dataInicio;
 	private LocalDateTime dataFim;
 	private Long usuarioId;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getNomeTarefa() {
 		return nomeTarefa;
