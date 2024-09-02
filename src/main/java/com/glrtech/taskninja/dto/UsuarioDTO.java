@@ -4,7 +4,6 @@ import com.glrtech.taskninja.entity.Usuario;
 
 public class UsuarioDTO {
 
-	private Long id;
 	private String nome;
 	private String login;
 	private String senha;
@@ -17,14 +16,6 @@ public class UsuarioDTO {
 
 	public Usuario criarUsuario() {
 		return new Usuario(nome, login, senha);
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNome() {
