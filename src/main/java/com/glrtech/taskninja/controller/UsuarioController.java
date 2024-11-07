@@ -39,7 +39,7 @@ public class UsuarioController {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
-
+	
 	@Operation(summary = "Retorna uma lista com todos os usuários cadastrados")
 	@GetMapping
 	public ResponseEntity<?> listarUsuarios() {

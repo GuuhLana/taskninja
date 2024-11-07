@@ -74,4 +74,14 @@ public class TarefaService {
 		// Salvar a tarefa atualizada no banco de dados
 		return tarefaRepository.save(tarefa);
 	}
+
+	public void concluirTarefa(Long id) {
+		
+		Tarefa tarefa = obterTarefaPorId(id);
+		tarefa.setStatus(Status.CONCLUIDO);
+		
+		tarefaRepository.save(tarefa);
+		
+		return;
+	}
 }
